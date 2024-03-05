@@ -4,7 +4,10 @@ const nextConfig = {
       locales: ['en-US', 'pt-BR'],
       defaultLocale: 'pt-BR',
     },
-    output: 'standalone'
+    output: 'standalone',
+    experimental: {
+      missingSuspenseWithCSRBailout: false,
+    }
 };
 
 export default nextConfig;
