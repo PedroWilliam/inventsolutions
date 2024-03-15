@@ -1,13 +1,13 @@
+import createNextIntlPlugin from 'next-intl/plugin';
+
+const withNextIntl = createNextIntlPlugin();
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    i18n: {
-      locales: ['en-US', 'pt-BR'],
-      defaultLocale: 'pt-BR',
-    },
     output: 'standalone',
     experimental: {
       missingSuspenseWithCSRBailout: false,
     }
 };
 
-export default nextConfig;
+export default withNextIntl(nextConfig);
