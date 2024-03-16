@@ -1,3 +1,4 @@
+import { unstable_setRequestLocale } from 'next-intl/server';
 import type { Metadata } from 'next';
 import { Open_Sans } from 'next/font/google';
 
@@ -6,7 +7,7 @@ interface Props {
   params: { locale: string };
 }
 
-const locales = ['en', 'pt-BR'];
+const locales = ['en-US', 'pt-BR'];
  
 export function generateStaticParams() {
   return locales.map((locale) => ({locale}));
@@ -21,7 +22,8 @@ export const metadata: Metadata = {
   authors: [{name: "Invent Solutions"}],
 };
 
-export default function LocaleLayout({ children, params: {locale} }: Props) {
+export default async function LocaleLayout({ children, params: {locale} }: Props) {
+  unstable_setRequestLocale(locale);
   
   return (
     <html lang={locale} className='full'>
